@@ -1,19 +1,32 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <hello></hello>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+    Value: {{ count }}
+    <router-link to="/home">Go to Home</router-link>
+    <router-link to="/about">Go to About</router-link>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Hello from './components/Hello'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import { mapGetters, mapActions } from 'vuex'
+import Hello from './components/Hello';
 
 export default {
   name: 'app',
   components: {
-    Hello{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-}{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    Hello,
+  },
+  computed: mapGetters([
+    'count',
+  ]),
+  methods: mapActions([
+    'increment',
+    'decrement',
+  ])
+};
 </script>
 
 <style>

@@ -1,18 +1,20 @@
-{{#if_eq build "runtime"}}
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-{{/if_eq}}
-import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-import App from './App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import App from './app'
+import RouterConfig from './router'
+import store from './vuex/store'
 
-/* eslint-disable no-new */
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+  routes:RouterConfig
+})
+
 new Vue({
   el: '#app',
-  {{#if_eq build "runtime"}}
-  render: h => h(App){{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  {{/if_eq}}
-  {{#if_eq build "standalone"}}
+  render: h => h(App),
   template: '<App/>',
-  components: { App }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-  {{/if_eq}}
-}){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  components: { App },
+  router:router,
+  store:store
+});

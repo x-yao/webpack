@@ -1,6 +1,7 @@
 <template>
-  <div id="hello">
-    Hello
+  <div id="about">
+    <img src="../../assets/logo.png">
+    About
   </div>
 </template>
 
@@ -11,7 +12,7 @@ export default {
 </script>
 
 <style>
-#hello {
+#about {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
